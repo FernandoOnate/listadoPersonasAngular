@@ -3,31 +3,8 @@
     <h3>{{titulo}}</h3>
   </div>
   <hr>
-  <div class="row mb-3">
-    <div class="col">
-      <form class="row">
-        <div class="form-group col-md-2">
-          <!-- <label for="nom">Nombre:</label> -->
-          <input type="text" id="nom" name="nombre" class="form-control" placeholder="Escribe tu nombre"
-            [(ngModel)]="nombreInput">
-        </div>
-        <div class="form-group col-md-2">
-          <!-- <label for="ape">Apellido:</label> -->
-          <input type="text" id="ape" name="apellido" class="form-control" placeholder="Escribe tu apellido"
-            [(ngModel)]="apellidoInput">
-        </div>
-        <div class="form-group col-md-2">
-          <button (click)="agregarPersona()" class="btn btn-primary" type="submit">Agregar persona</button>
-        </div>
-        <div class="form-group col-md-2" *ngIf="showMessage; else listaDesplegada">
-          {{mensaje}}
-        </div>
-        <ng-template #listaDesplegada>
-          <div class="form-group col-md-2">Sin personas nuevas.</div>
-        </ng-template>
-      </form>
-    </div>
-  </div>
+ <app-formulario (personaCreada)="personaEmitida($event)">
+ </app-formulario>
   <hr>
 </div>
 <app-persona *ngFor="let elementPersona of personas; let i = index" [persona]="elementPersona" [indice]="i">
