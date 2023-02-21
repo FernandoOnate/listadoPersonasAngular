@@ -1,6 +1,7 @@
 import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { Persona } from '../persona.model';
 import { LogginService } from '../logginService.service';
+import { PersonaService } from '../personas.service';
 
 @Component({
   selector: 'app-formulario',
@@ -11,8 +12,15 @@ import { LogginService } from '../logginService.service';
   // providers:[LogginService]
 })
 export class FormularioComponent {
-  constructor(private logginService:LogginService){}
-  @Output() personaCreada = new EventEmitter<Persona>();
+  constructor(
+    private logginService: LogginService,
+    private personasService: PersonaService
+  ) { }
+
+  // COMENTADO POR CLASE DATA SERVICE EN ANGULAR
+  // @Output() personaCreada = new EventEmitter<Persona>();
+
+  
   // COMENTADO POR CLASE REFERENCIA LOCAL EN ANGULAR 288
   // nombreInput = '';
   // apellidoInput = '';
@@ -28,7 +36,7 @@ export class FormularioComponent {
     // if (this.apellidoInput.length > 0 && this.nombreInput.length > 0) {
     // const personaNueva = new Persona(this.nombreInput, this.apellidoInput);
 
-  // COMENTADO POR CLASE VIEW CHILD
+    // COMENTADO POR CLASE VIEW CHILD
     // if (nom.value.length > 0 && ape.value.length > 0) {
     //   const personaNueva = new Persona(nom.value, ape.value);
 
@@ -38,7 +46,11 @@ export class FormularioComponent {
       // COMENTADO POR CLASE VIEWCHILD 
       // const personaNueva = new Persona(nom.value, ape.value);
       // this.personas.push(personaNueva);
-      this.personaCreada.emit(personaNueva);
+
+      // COMENTADO POR CLASE DATA SERVICES EN ANGULAR
+      // this.personaCreada.emit(personaNueva);
+
+      this.personasService.agregarPersona(personaNueva);
       this.showMessage = true;
       this.mensaje = 'Persona agregada!';
       this.logginService.enviaMensajeConsola(this.mensaje);
