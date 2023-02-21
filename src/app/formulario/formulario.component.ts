@@ -1,12 +1,17 @@
 import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { Persona } from '../persona.model';
+import { LogginService } from '../logginService.service';
 
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
-  styleUrls: ['./formulario.component.css']
+  styleUrls: ['./formulario.component.css'],
+  // SI NO SE QUIERE AGREGAR PROVIDER EN CADA COMPONENTE SE PUEDE AGREGAR
+  // EL SERVICIO COMO PROVEEDOR EN EL APP MODULE
+  // providers:[LogginService]
 })
 export class FormularioComponent {
+  constructor(private logginService:LogginService){}
   @Output() personaCreada = new EventEmitter<Persona>();
   // COMENTADO POR CLASE REFERENCIA LOCAL EN ANGULAR 288
   // nombreInput = '';
@@ -36,6 +41,7 @@ export class FormularioComponent {
       this.personaCreada.emit(personaNueva);
       this.showMessage = true;
       this.mensaje = 'Persona agregada!';
+      this.logginService.enviaMensajeConsola(this.mensaje);
     } else {
       this.mensaje = 'Debes completar los campos!';
     }
