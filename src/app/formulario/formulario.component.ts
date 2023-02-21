@@ -8,15 +8,18 @@ import { Persona } from '../persona.model';
 })
 export class FormularioComponent {
   @Output() personaCreada = new EventEmitter<Persona>();
-  nombreInput = '';
-  apellidoInput = '';
+  // COMENTADO POR CLASE REFERENCIA LOCAL EN ANGULAR 288
+  // nombreInput = '';
+  // apellidoInput = '';
   mensaje = '';
   showMessage = false;
 
   
-  agregarPersona(): void {
-    if (this.apellidoInput.length > 0 && this.nombreInput.length > 0) {
-      const personaNueva = new Persona(this.nombreInput, this.apellidoInput);
+  agregarPersona(nom:HTMLInputElement,ape:HTMLInputElement): void {
+    // if (this.apellidoInput.length > 0 && this.nombreInput.length > 0) {
+      // const personaNueva = new Persona(this.nombreInput, this.apellidoInput);
+    if (nom.value.length > 0 && ape.value.length > 0) {
+      const personaNueva = new Persona(nom.value, ape.value);
       // this.personas.push(personaNueva);
       this.personaCreada.emit(personaNueva);
       this.showMessage = true;
