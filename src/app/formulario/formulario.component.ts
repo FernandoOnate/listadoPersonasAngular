@@ -15,12 +15,17 @@ export class FormularioComponent {
   constructor(
     private logginService: LogginService,
     private personasService: PersonaService
-  ) { }
+  ) {
+    this.personasService.saludar.subscribe(
+      (index: number) => { alert('El indice es '+index) },
+      (e: any) => { console.log('error ',e)}
+    )
+  }
 
   // COMENTADO POR CLASE DATA SERVICE EN ANGULAR
   // @Output() personaCreada = new EventEmitter<Persona>();
 
-  
+
   // COMENTADO POR CLASE REFERENCIA LOCAL EN ANGULAR 288
   // nombreInput = '';
   // apellidoInput = '';

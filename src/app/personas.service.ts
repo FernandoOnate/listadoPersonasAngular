@@ -1,10 +1,12 @@
-import { Injectable } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
 import { LogginService } from "./logginService.service";
 import { Persona } from "./persona.model";
 // es necesario este decorador para hacerle saber a angular que 
 // este servicio se puede dejar inyectar por otro servicio
 @Injectable()
 export class PersonaService {
+    saludar = new EventEmitter<number>();
+
     constructor(private loginService: LogginService) { }
     personas: Persona[] = [
         new Persona('Juanito', 'Alcachofas'),
