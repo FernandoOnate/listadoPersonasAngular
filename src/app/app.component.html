@@ -3,11 +3,5 @@
     <h3>{{titulo}}</h3>
   </div>
   <hr>
-  <!-- COMENTADO POR CLASE DATA SERVICE EN ANGULAR -->
- <!-- <app-formulario (personaCreada)="personaEmitida($event)"> -->
- <app-formulario>
- </app-formulario>
-  <hr>
+  <router-outlet></router-outlet>
 </div>
-<app-persona *ngFor="let elementPersona of personas; let i = index" [persona]="elementPersona" [indice]="i">
-</app-persona>
