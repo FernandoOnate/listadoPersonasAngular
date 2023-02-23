@@ -1,6 +1,11 @@
 <div class="container">
-  <div class="col">
-    <h3>{{titulo}}</h3>
+  <div class="row">
+    <div class="col-6 col-md-4 col-sm-4">
+      <h3>{{titulo}}</h3>
+    </div>
+    <div class="col-6 col-md-4 col-sm-4">
+      <button class="btn btn-info" routerLink="/personas/agregar">Agregar nueva</button>
+    </div>
   </div>
   <hr>
   <router-outlet></router-outlet>

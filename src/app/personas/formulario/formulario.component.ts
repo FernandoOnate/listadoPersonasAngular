@@ -2,6 +2,7 @@ import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular
 import { Persona } from '../../persona.model';
 import { LogginService } from '../../logginService.service';
 import { PersonaService } from '../../personas.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-formulario',
@@ -14,7 +15,8 @@ import { PersonaService } from '../../personas.service';
 export class FormularioComponent {
   constructor(
     private logginService: LogginService,
-    private personasService: PersonaService
+    private personasService: PersonaService,
+    private router:Router
   ) {
     this.personasService.saludar.subscribe(
       (index: number) => { alert('El indice es '+index) },
@@ -36,7 +38,7 @@ export class FormularioComponent {
 
   // COMENTADO POR CLASE VIEW CHILD
   // agregarPersona(nom:HTMLInputElement,ape:HTMLInputElement): void {
-  agregarPersona(): void {
+    onGuardarPersona(): void {
     // COMENTADO POR CLASE LOCAL REFERENCE
     // if (this.apellidoInput.length > 0 && this.nombreInput.length > 0) {
     // const personaNueva = new Persona(this.nombreInput, this.apellidoInput);
@@ -59,6 +61,10 @@ export class FormularioComponent {
       this.showMessage = true;
       this.mensaje = 'Persona agregada!';
       this.logginService.enviaMensajeConsola(this.mensaje);
+
+      setTimeout(() => {
+        this.router.navigate(['personas']);
+      }, 2000);
     } else {
       this.mensaje = 'Debes completar los campos!';
     }
