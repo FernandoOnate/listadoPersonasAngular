@@ -5,19 +5,19 @@
         <form class="row" #ngF="ngForm" (ngSubmit)="ngF.form.valid && onGuardarPersona()">
             <div class="form-group col-md-2">
                 <!-- <label for="nom">Nombre:</label> -->
-                <input type="text" id="nom" name="nombre" class="form-control" placeholder="Escribe tu nombre"
-                    #nombreInput required>
-                <!-- comentado por clase de referecia local en angular -->
                 <!-- <input type="text" id="nom" name="nombre" class="form-control" placeholder="Escribe tu nombre"
-                        [(ngModel)]="nombreInput"> -->
+                    #nombreInput required> -->
+                <!-- comentado por clase de referecia local en angular -->
+                <input type="text" id="nom" name="nombre" class="form-control" placeholder="Escribe tu nombre"
+                        [(ngModel)]="nombreInput">
             </div>
             <div class="form-group col-md-2">
                 <!-- <label for="ape">Apellido:</label> -->
-                <input type="text" id="ape" name="apellido" class="form-control" placeholder="Escribe tu apellido"
-                    #apellidoInput required>
-                <!-- comentado por clase de referecia local en angular -->
                 <!-- <input type="text" id="ape" name="apellido" class="form-control" placeholder="Escribe tu apellido"
-                    [(ngModel)]="apellidoInput"> -->
+                    #apellidoInput required> -->
+                <!-- comentado por clase de referecia local en angular -->
+                <input type="text" id="ape" name="apellido" class="form-control" placeholder="Escribe tu apellido"
+                    [(ngModel)]="apellidoInput">
             </div>
             <div class="form-group col-md-2">
                 <!-- COMENTADO POR CLASE VIEW CHILD -->

@@ -17,4 +17,13 @@ export class PersonaService {
         this.personas.push(persona);
         this.loginService.enviaMensajeConsola('La persona se agregó: ' + persona.nombre + ' ' + persona.apellido);
     }
+    encontrarPersona(id:number){
+        const personaEncontrada = this.personas[id];
+        return personaEncontrada;
+    }
+    modificarPersona(id:number,personaNueva:Persona){
+        const personaVieja = this.personas[id];
+        personaVieja.nombre = personaNueva.nombre;
+        personaVieja.apellido = personaNueva.apellido;
+    }
 }
