@@ -14,6 +14,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class FormularioComponent implements OnInit {
   index: number;
+  modoEdicion:number;
+  textoBoton:string;
   // COMENTADO POR CLASE REFERENCIA LOCAL EN ANGULAR 288
   nombreInput: string;
   apellidoInput: string;
@@ -29,17 +31,22 @@ export class FormularioComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.personasService.saludar.subscribe(
-      (index: number) => { alert('El indice es ' + index) },
-      (e: any) => { console.log('error ', e) }
-    )
+    // this.personasService.saludar.subscribe(
+    //   (index: number) => { alert('El indice es ' + index) },
+    //   (e: any) => { console.log('error ', e) }
+    // )
   }
   ngOnInit(): void {
     this.index = this.route.snapshot.params['id'];
-    if (this.index) {
+    this.modoEdicion = +this.route.snapshot.queryParams['modoEdicion'];
+
+    if (this.index != null && this.modoEdicion != null && this.modoEdicion === 1) {
       const persona: Persona = this.personasService.encontrarPersona(this.index);
       this.nombreInput = persona.nombre;
       this.apellidoInput = persona.apellido;
+      this.textoBoton = 'Editar persona';
+    }else{
+      this.textoBoton = 'Agregar persona';
     }
   }
   // COMENTADO POR CLASE DATA SERVICE EN ANGULAR
@@ -49,7 +56,7 @@ export class FormularioComponent implements OnInit {
   onGuardarPersona(): void {
     const personaNueva = new Persona(this.nombreInput, this.apellidoInput);
 
-    if (this.index) {
+    if (this.index && this.modoEdicion != null && this.modoEdicion === 1) {
       this.personasService.modificarPersona(this.index, personaNueva);
     } else {
       // COMENTADO POR CLASE LOCAL REFERENCE

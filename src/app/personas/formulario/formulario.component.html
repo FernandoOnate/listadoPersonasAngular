@@ -22,7 +22,7 @@
             <div class="form-group col-md-2">
                 <!-- COMENTADO POR CLASE VIEW CHILD -->
                 <!-- <button (click)="agregarPersona(nombreInput,apellidoInput)" class="btn btn-primary" type="submit">Agregar persona</button> -->
-                <button class="btn btn-primary" type="submit">Agregar persona</button>
+                <button class="btn btn-primary" type="submit">{{textoBoton}}</button>
             </div>
             <div class="form-group col-md-2" *ngIf="showMessage; else listaDesplegada">
                 {{mensaje}}
