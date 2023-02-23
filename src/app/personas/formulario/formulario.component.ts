@@ -42,13 +42,8 @@ export class FormularioComponent implements OnInit {
       this.apellidoInput = persona.apellido;
     }
   }
-
   // COMENTADO POR CLASE DATA SERVICE EN ANGULAR
   // @Output() personaCreada = new EventEmitter<Persona>();
-
-
-
-
   // COMENTADO POR CLASE VIEW CHILD
   // agregarPersona(nom:HTMLInputElement,ape:HTMLInputElement): void {
   onGuardarPersona(): void {
@@ -85,5 +80,14 @@ export class FormularioComponent implements OnInit {
     setTimeout(() => {
       this.router.navigate(['personas']);
     }, 2000);
+  }
+
+  eliminarPersona(){
+    if(this.index != null){
+      this.personasService.eliminarPersona(this.index);
+      setTimeout(() => {
+          this.router.navigate(['personas']);
+      }, 1000);
+    }
   }
 }

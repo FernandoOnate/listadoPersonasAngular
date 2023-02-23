@@ -31,5 +31,8 @@
                 <div class="form-group col-md-2">Sin personas nuevas.</div>
             </ng-template>
         </form>
+        <div class="form-group col-md-2">
+            <button class="btn btn-danger" *ngIf="index != null" (click)="eliminarPersona()">Eliminar esta persona</button>
+        </div>
     </div>
 </div>
