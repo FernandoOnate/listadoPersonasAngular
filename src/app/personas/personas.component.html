@@ -1,7 +1,6 @@
   <!-- COMENTADO POR CLASE DATA SERVICE EN ANGULAR -->
   <!-- <app-formulario (personaCreada)="personaEmitida($event)"> -->
-    <app-formulario>
-    </app-formulario>
+    <router-outlet></router-outlet>
     <hr>
   <app-persona *ngFor="let elementPersona of personas; let i = index" [persona]="elementPersona" [indice]="i">
   </app-persona>
