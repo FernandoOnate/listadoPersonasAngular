@@ -35,8 +35,17 @@ export class PersonaService {
         const personaVieja = this.personas[id];
         personaVieja.nombre = personaNueva.nombre;
         personaVieja.apellido = personaNueva.apellido;
+        this.dataService.modificarPersona(id,personaNueva);
     }
     eliminarPersona(id:number){
         this.personas.splice(id,1);
+        this.dataService.eliminarPersona(id);
+        // se vuelve a guardar el arreglo por el problema del indice en bd
+        this.reGuardarPersonas();
+    }
+    reGuardarPersonas(){
+        if(this.personas != null){
+            this.dataService.guardarPersonas(this.personas);
+        }
     }
 }
