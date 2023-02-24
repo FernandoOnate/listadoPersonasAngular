@@ -7,17 +7,17 @@ import { PersonaComponent } from './personas/persona/persona.component';
 import { FormularioComponent } from './personas/formulario/formulario.component';
 import { LogginService } from './logginService.service';
 import { PersonaService } from './personas.service';
-import { ViewPersonComponent } from './view-person/view-person.component';
 import { PersonasComponent } from './personas/personas.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonaComponent,
     FormularioComponent,
-    ViewPersonComponent,
-    PersonasComponent
+    PersonasComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
