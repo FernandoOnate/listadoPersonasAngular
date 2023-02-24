@@ -7,12 +7,21 @@ import { PersonaService } from '../personas.service';
   templateUrl: './personas.component.html',
   styleUrls: ['./personas.component.css']
 })
-export class PersonasComponent implements OnInit{
-  personas:Persona[];
+export class PersonasComponent implements OnInit {
+  personas: Persona[];
 
-  constructor(private personaService:PersonaService){}
-  
-  ngOnInit():void{
-    this.personas = this.personaService.personas; 
+  constructor(private personaService: PersonaService) { }
+
+  ngOnInit(): void {
+    this.personaService.obtenerPersonasBD().subscribe(
+      {
+        next: (personasResponse: Persona[] | any) => {
+          this.personas = personasResponse;
+          this.personaService.setPersonasArray(personasResponse);
+        },
+        error: err => console.log('error al traer en la bd ', err)
+      }
+    );
+
   }
 }
