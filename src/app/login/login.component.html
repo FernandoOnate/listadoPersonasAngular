@@ -1,0 +1,20 @@
+<div class="container">
+    <form #forma="ngForm" (ngSubmit)="forma.form.valid && login(forma)">
+        <div class="mb-3">
+            <label for="nombreControl" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="nombreControl" aria-describedby="emailHelp" ngModel
+                name="mailInput" required placeholder="Escribe tu correo">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="passControl" class="form-label">Password</label>
+            <input type="password" class="form-control" id="passControl" name="passwordInput"
+             ngModel required placeholder="Escribe tu clave" autocomplete="off">
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
