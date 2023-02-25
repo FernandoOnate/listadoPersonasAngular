@@ -2,10 +2,12 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "src/environments/environment";
+import { signOut } from "firebase/auth";
+
 
 @Injectable()
 export class LoginService {
-    token: string;
+    token:any;
     constructor(private router: Router) {
     }
     logIn(email: string, password: string) {
@@ -30,5 +32,19 @@ export class LoginService {
     }
     getIdToken() {
         return this.token;
+    }
+    isAuth() {
+        return this.token != null
+    }
+    logOut() {
+        signOut(auth).then(() => {
+            // Sign-out successful.
+            console.log('deslogueado')
+            this.token = null;
+            this.router.navigate(['login']);
+        }).catch((error) => {
+            // An error happened.
+            console.log('error al desloguear',error)
+        });
     }
 }

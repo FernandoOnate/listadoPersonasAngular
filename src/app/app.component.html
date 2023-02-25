@@ -3,8 +3,14 @@
     <div class="col-6 col-md-4 col-sm-4">
       <h3>{{titulo}}</h3>
     </div>
-    <div class="col-6 col-md-4 col-sm-4">
+    <div class="col-3 col-md-4 col-sm-3"*ngIf="isAuth()">
       <button class="btn btn-info" routerLink="/personas/agregar">Agregar nueva</button>
+    </div>
+    <div class="col-3 col-md-4 col-sm-3" *ngIf="!isAuth()"> 
+      <button class="btn btn-info" routerLink="/login">Login</button>
+    </div>
+    <div class="col-3 col-md-4 col-sm-3" *ngIf="isAuth()">
+      <button class="btn btn-info" (click)="logOut()">Logout</button>
     </div>
   </div>
   <hr>

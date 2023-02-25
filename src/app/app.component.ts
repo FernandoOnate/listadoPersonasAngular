@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Persona } from './persona.model';
 import { PersonaService } from './personas.service';
+import { LoginService } from './services/LoginService.service';
 
 @Component({
   selector: 'app-root',
@@ -8,23 +9,30 @@ import { PersonaService } from './personas.service';
   styleUrls: ['./app.component.css'],
   // providers: [PersonaService]
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   titulo = 'Listado de personas';
-  ngOnInit(): void {
-    
+  constructor(private loginService: LoginService) { }
+  ngOnInit(): void { }
+
+  logOut() {
+    this.loginService.logOut()
+  }
+  
+  isAuth(): boolean {
+    return this.loginService.isAuth();
   }
   // COMENTADO POR ROUTING CLASE
   // personas:Persona[];
 
   // constructor(private personaService:PersonaService){}
-  
+
   // ngOnInit():void{
   //   this.personas = this.personaService.personas; 
   // }
 
   // COMENTADO POR CLASE DATA SERVICE EN ANGULAR
   // personaEmitida(event: Persona): void {
-    // this.personas.push(event);
+  // this.personas.push(event);
   //   this.personaService.agregarPersona(event);
   // }
 }
