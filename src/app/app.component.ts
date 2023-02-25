@@ -8,8 +8,11 @@ import { PersonaService } from './personas.service';
   styleUrls: ['./app.component.css'],
   // providers: [PersonaService]
 })
-export class AppComponent{
+export class AppComponent implements OnInit{
   titulo = 'Listado de personas';
+  ngOnInit(): void {
+    
+  }
   // COMENTADO POR ROUTING CLASE
   // personas:Persona[];
 
