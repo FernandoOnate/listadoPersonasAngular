@@ -4,16 +4,19 @@ import { PersonasComponent } from './personas/personas.component';
 import { FormularioComponent } from './personas/formulario/formulario.component';
 import { ErrorComponent } from './error/error.component';
 import { LoginComponent } from './login/login.component';
+import { LoginGuardian } from './guards/login.guardian';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: PersonasComponent
+    component: PersonasComponent,
+    canActivate:[LoginGuardian]
   },
   {
     path: 'personas',
     component: PersonasComponent,
+    canActivate: [LoginGuardian],
     children: [
       {
         path: 'agregar',
@@ -26,7 +29,7 @@ const routes: Routes = [
     ]
   },
   {
-    path:'login',
+    path: 'login',
     component: LoginComponent
   }
   ,
